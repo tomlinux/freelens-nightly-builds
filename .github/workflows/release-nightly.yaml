@@ -45,7 +45,7 @@ jobs:
           gh release delete $tag \
             --yes \
             --cleanup-tag \
-            --repo freelensapp/freelens-nightly-builds \
+            --repo tomlinux/freelens-nightly-builds \
             || true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -56,7 +56,7 @@ jobs:
           gh release create $tag \
             --draft \
             --title "Nightly build $tag" \
-            --repo freelensapp/freelens-nightly-builds
+            --repo tomlinux/freelens-nightly-builds
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -425,7 +425,7 @@ jobs:
         run: |
           gh release upload $tag \
             freelens/dist/Freelens*.* \
-            --repo freelensapp/freelens-nightly-builds
+            --repo tomlinux/freelens-nightly-builds
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ needs.make-draft-release.outputs.tag }}
